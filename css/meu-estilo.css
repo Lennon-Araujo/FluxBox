@@ -1,0 +1,44 @@
+*{
+    font-size: 17px;
+}
+.centro{
+    text-align: center;
+}
+.flx-nav{
+    display: flex;
+    justify-content: space-between;
+}
+.bg-image{
+    margin: 0;
+    padding: 0;
+    background: #f8f8f8 url("../img/logoflux.png") no-repeat center;
+    background-size: cover;
+    width: 100%;
+    min-height: 100px;
+}
+
+.imagem-logo{
+    height: 56px;
+    width: 200px;
+    background: #f8f8f8 url("../img/logoflux.png") no-repeat center;
+    background-size: cover;
+    margin: auto;
+}
+
+.bg-navbar{
+    background-color: #119ABF;
+}
+
+.nav-link > span{
+    color: #f8f8f8;
+    font-size: 18px;
+}
+
+.menu-ham{
+    color: #119ABF;
+    height: 70px;
+}
+
+.hamburguer, .opcoes{
+    width: 250px;
+}
