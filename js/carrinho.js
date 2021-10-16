@@ -2,9 +2,9 @@ function validarCarrinho() {
 	let produto = document.getElementById("produto").value;
 	let quantidade = document.getElementById("quantidade").value;
 	let cliente = document.getElementById("cliente").value;
-	let funcionario = document.getElementById("funcionario").value;
+	let endereco = document.getElementById("endereco").value;
 
-	if (produto == "" || quantidade == "" || cliente == "" || funcionario == "" ) {
+	if (produto === "" || quantidade === "" || endereco === "") {
 		document.getElementById("erro-carrinho").removeAttribute("hidden");
 	} else {
 		document.getElementById("form-carrinho").removeAttribute("onsubmit");
