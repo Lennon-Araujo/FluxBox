@@ -33,21 +33,21 @@
 
 
 
-                <form method="POST" action="acoes/usuarios/inserir-usuario.php" id="form-usuario" onsubmit="return false">
+                <form method="POST" action="acoes/usuarios/inserir-usuario.php" id="form-usuario" onsubmit="return false" autocomplete="off">
                     <div class="form-group">
                         <label>Nome:</label>
-                        <input type="text" class="form-control form-control-user" id="nome" name="nome">
+                        <input type="text" class="form-control form-control-user" id="nome" name="nome" autocomplete="off">
 
                     </div>
 
                     <div class="form-group">
                         <label>Email:</label>
-                        <input type="email" class="form-control form-control-user" id="email" name="email">
+                        <input type="email" class="form-control form-control-user" id="email" name="email" autocomplete="off">
                     </div>
 
                     <div class="form-group">
                         <label>Senha:</label>
-                        <input type="password" class="form-control form-control-user" id="senha" name="senha">
+                        <input type="password" class="form-control form-control-user" id="senha" name="senha" autocomplete="off">
                     </div>
 
                     <input type="submit" value="Salvar Usuário" class="btn btn-success col-lg-12" onclick="validarUsuario()" />

@@ -4,12 +4,6 @@
   <!-- Sidebar -->
   <ul class="navbar-nav sidebar sidebar-dark accordion bg-navbar" id="accordionSidebar">
 
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-
-      <div></div>
-    </a>
-
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
@@ -56,8 +50,7 @@
       </a>
       <div id="collapsePost" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="cadastrar-posts.php">Cadastrar</a>
-          <a class="collapse-item" href="listar-posts.php">Listar</a>
+          <a class="collapse-item" href="listar-vendas.php">Listar</a>
         </div>
       </div>
     </li>

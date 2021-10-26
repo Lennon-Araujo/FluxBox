@@ -2,8 +2,8 @@
 require('../../includes/verificaLogado.php');
 require('../../includes/conexao.php');
 $id = $_POST['id'];
-$cliente = mb_strtoupper($_POST['cliente']);
-$endereco = mb_strtoupper($_POST['endereco']);
+$cliente = $_POST['cliente'];
+$endereco = $_POST['endereco'];
 $telefone = $_POST['telefone'];
 
 

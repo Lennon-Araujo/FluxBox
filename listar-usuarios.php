@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-3">
                 <a href="cadastrar-usuarios.php">
-                    <button class="btn btn-primary col-md-12">+ Nova usuário</button>
+                    <button class="btn btn-primary col-md-12">+ Novo usuário</button>
                 </a>
             </div>
         </div>

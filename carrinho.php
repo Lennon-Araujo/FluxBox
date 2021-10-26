@@ -87,10 +87,10 @@
             <input type="text" class="form-control form-control-user" id="endereco" name="endereco" required="required">
           </div>
 
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label>Preço:</label>
             <input type="text" class="form-control form-control-user" id="preco" name="preco">
-          </div>
+          </div> -->
 
           <input type="submit" value="Cadastrar pedido" class="btn btn-info col-lg-12" onclick="validarCarrinho()" />
         </form>
@@ -98,68 +98,75 @@
     </div>
     <div class="col-xl-7 col-lg-4 col-sm-12 mt-1">
       <div class="card">
+        <div class="alert alert-danger alert-dismissible" id="erro-confirma-venda" hidden>
+          Ops! Necessário selecionar o <strong>funcionário</strong>!
+          <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+        </div>
+
         <h5 class="card-header bg-info text-light">
           Pedidos
         </h5>
         <div class="card-body">
-          <div class="row d-flex justify-content-around">
-            <?php
-            $sql = "SELECT * FROM pedido WHERE confirmado = 0 ORDER BY id ASC";
-            $resultado = mysqli_query($conexao, $sql);
+          <form method="POST" action="acoes/carrinho/confirmar-venda.php" id="form-venda" onsubmit="return false">
+            <div class="row d-flex justify-content-around">
+              <?php
+              $sql = "SELECT * FROM pedido WHERE confirmado = 0 ORDER BY id ASC";
+              $resultado = mysqli_query($conexao, $sql);
 
-            while ($row = mysqli_fetch_assoc($resultado)) {
-              $id = $row['id'];
-              $produto = $row['produto'];
-              $preco = $row['preco'];
-              $quantidade = $row['quantidade'];
-              $cliente = $row['cliente'];
-              $endereco = $row['endereco'];
-            ?>
-              <div class="col-xl-6 col-md-12 col-sm-12 mb-1">
-                <div class="card border-info text-center">
-                  <div class="card-body">
-                    <h5 class="card-title">Pedido #<?php echo $id ?> </h5>
-                    <div class="d-flex flex-column">
-                      <div class="card-text"><strong><?php echo $quantidade ?> - <?php echo ucfirst($produto) ?></strong></div>
-                      <div class="card-text">End: <?php echo ucfirst($endereco) ?></div>
-                      <div class="card-text">Preço: <?php echo $preco ?></div>
-                      <div class="card-text">Cliente: <?php echo $cliente ?></div>
-                    </div>
-                    <div class="input-group mb-3">
-                      <select class="custom-select" id="funcionario" name="funcionario">
-                        <?php
-                        $sqlFunc = "SELECT * FROM 
+              while ($row = mysqli_fetch_assoc($resultado)) {
+                $id = $row['id'];
+                $produto = $row['produto'];
+                $preco = $row['preco'];
+                $quantidade = $row['quantidade'];
+                $cliente = $row['cliente'];
+                $endereco = $row['endereco'];
+              ?>
+                <div class="col-xl-6 col-md-12 col-sm-12 mb-1">
+                  <div class="card border-info text-center">
+                    <div class="card-body">
+                      <h5 class="card-title" name="<?php echo $id ?>">Pedido #<?php echo $id ?> </h5>
+                      <input type="number" name="idPedido" id="idPedido" value="" hidden>
+                      <div class="d-flex flex-column">
+                        <div class="card-text" name="produto"><strong><?php echo $quantidade ?> - <?php echo ucfirst($produto) ?></strong></div>
+                        <div class="card-text" name="<?php echo $endereco ?>">End: <?php echo ucfirst($endereco) ?></div>
+                        <div class="card-text" name="<?php echo $preco ?>">Preço: <?php echo $preco ?></div>
+                        <div class="card-text" name="<?php echo $cliente ?>">Cliente: <?php echo $cliente ?></div>
+                      </div>
+                      <div class="form-group">
+                        <select class="form-control form-control-user" id="func" name="func">
+                          <?php
+                          require('includes/conexao.php');
+                          $sqlFunc = "SELECT * FROM 
                                         funcionarios
                                      ORDER BY
                                         nome
                                     ASC";
-                        $resultadoFunc = mysqli_query($conexao, $sqlFunc);
-                        echo "<option value=''>Funcionário...</option>";
-                        while ($rowFunc = mysqli_fetch_assoc($resultadoFunc)) {
-                          $idFunc = $rowFunc['id'];
-                          $nome = $rowFunc['nome'];
-                          echo "<option value='$nome'>$nome</option>";
-                        }
-                        ?>
-                      </select>
-                    </div>
-
-                    <div class="dropdown">
-                      <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Finalizar pedido
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Pedido entregue</a>
-                        <a class="dropdown-item" href="#">Cancelar pedido</a>
+                          $resultadoFunc = mysqli_query($conexao, $sqlFunc);
+                          while ($rowFunc = mysqli_fetch_assoc($resultadoFunc)) {
+                            $idFunc = $rowFunc['id'];
+                            $funcionario = $rowFunc['nome'];
+                            echo "<option value='$funcionario'>$funcionario</option>";
+                          }
+                          ?>
+                        </select>
                       </div>
-                    </div>
 
+                      <div class="row">
+                        <a class="btn btn-info offset-lg-1 col-lg-10 mb-2" href="acoes/carrinho/confirmar-venda.php?id=<?php echo $id ?>&funcionario=<?php echo $funcionario ?>">
+                          Confirmar entrega
+                        </a>
+                        <a class="btn btn-outline-danger offset-lg-1 col-lg-10" href="acoes/carrinho/excluir-pedido.php?id=<?php echo $id ?>">
+                          Cancelar pedido
+                        </a>
+                      </div>
+
+                    </div>
                   </div>
                 </div>
-              </div>
 
-            <?php } ?>
-          </div>
+              <?php } ?>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -174,4 +181,5 @@
 </div>
 
 <script src="js/carrinho.js"></script>
+<script src="js/venda.js"></script>
 <?php include('includes/footer.php'); ?>

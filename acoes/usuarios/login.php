@@ -21,13 +21,13 @@ while ($row = mysqli_fetch_assoc($resultado)) {
         session_start();
         $_SESSION['logado'] = true;
 
-        $sqlNome = "SELECT nome FROM usuarios WHERE email = '$email' LIMIT 1";
+        $sqlNome = "SELECT nome,id FROM usuarios WHERE email = '$email' LIMIT 1";
         $resultadoNome = mysqli_query($conexao, $sqlNome);
 
         while($rowNome = mysqli_fetch_assoc($resultadoNome)){
             $_SESSION['nome'] = $rowNome['nome'];
+            $_SESSION['id'] = $rowNome['id'];
         }
-        var_dump($_SESSION);
 
         echo "<script>
             location.href='../../home.php';

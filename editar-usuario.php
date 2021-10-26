@@ -19,7 +19,7 @@ while ($row = mysqli_fetch_assoc($resultado)) {
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Alterar Usuário</h1>
+        <h1 class="h3 mb-0 text-gray-800">Editar Usuário</h1>
     </div>
 
     <!-- Content Row -->
@@ -36,13 +36,13 @@ while ($row = mysqli_fetch_assoc($resultado)) {
                     <input type="hidden" name="idUsuario" value="<?php echo $id ?>">
                     <div class="form-group">
                         <label>Nome:</label>
-                        <input type="text" class="form-control form-control-user" id="nome" name="nome" value="<?php echo mb_strtoupper($nome) ?>">
+                        <input type="text" class="form-control form-control-user" id="nome" name="nome" value="<?php echo $nome ?>">
 
                     </div>
 
                     <div class="form-group">
                         <label>Email:</label>
-                        <input type="email" class="form-control form-control-user" id="email" name="email" value="<?php echo strtoupper($email) ?>">
+                        <input type="email" class="form-control form-control-user" id="email" name="email" value="<?php echo $email ?>">
                     </div>
 
                     <div class="form-group">
