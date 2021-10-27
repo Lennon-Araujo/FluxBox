@@ -48,7 +48,7 @@
                         $quantidade = $row['qtd_produto'];
                         $numPedido = $row['numero_pedido'];
                         $preco = $row['preco'];
-                        $data = $row['data'];
+                        $dataVenda = $row['dataVenda'];
                     ?>
                         <tr class="centro">
                             <td><strong><?php echo $id ?></strong></td>
@@ -58,7 +58,7 @@
                             <td><?php echo $quantidade ?></td>
                             <td>#<?php echo $numPedido ?></td>
                             <td><?php echo $preco ?></td>
-                            <td><?php echo date('d/m/Y H:i') ?></td>
+                            <td><?php echo $dataVenda ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
